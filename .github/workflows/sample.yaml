@@ -36,3 +36,15 @@ jobs:
     - name: Check Terraform and Packer Version
       run: terraform version && packer version
       shell: bash
+  terraform_init:
+    name: 'Files check and Terraform init'
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+            shell: bash
+    steps:
+    - name: list repo files
+      run: |
+        ls -al
+        pwd
+        free
