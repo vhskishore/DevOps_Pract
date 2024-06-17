@@ -1,0 +1,22 @@
+---
+ - name: workflow for running test pipeling
+   on:
+     pull_request:
+       bancher:
+         - development
+       types:
+         - closed
+     push:
+       branches:
+         - master
+   jobs:
+     megastar:
+       name: mega job
+       runs-on: ubuntu-latest
+       default:
+         run:
+           shell: bash
+       steps:
+         - name: print runner hostname
+           run: hostname
+    
