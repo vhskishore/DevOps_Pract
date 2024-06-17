@@ -37,6 +37,7 @@ jobs:
       run: terraform version && packer version
       shell: bash
   terraform_init:
+    needs: tools_check
     name: 'Files check and Terraform init'
     runs-on: ubuntu-latest
     defaults:
