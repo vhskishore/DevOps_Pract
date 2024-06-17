@@ -14,8 +14,8 @@ env:
     PACKER_PRODUCT_VERSION: 1.8.5
     TERRAFORM_PRODUCT_VERSION: 1.7.3
 jobs:
-  megastar:
-    name: mega job
+  tools_check:
+    name: 'checking_tools_status'
     runs-on: ubuntu-latest
     steps:
     - name: print runner hostname
