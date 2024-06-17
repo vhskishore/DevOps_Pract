@@ -9,6 +9,10 @@ on:
     branches:
       - main
       - master
+env:
+    ACTION_STEP_DEBUG: true
+    PACKER_PRODUCT_VERSION: 1.8.5
+    TERRAFORM_PRODUCT_VERSION: 1.7.3
 jobs:
   megastar:
     name: mega job
@@ -20,6 +24,15 @@ jobs:
     - name: print runner ip address
       run: curl -sL https://ipconfig.io
       shell: bash
-    - name: print name
-      run: echo "hi"
+    - name: Setup terraform with specified version on the runner
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+    - name: Setup `packer`
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{ env.PACKER_PRODUCT_VERSION }}
+    - name: Check Terraform and Packer Version
+      run: terraform version
       shell: bash
