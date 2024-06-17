@@ -34,5 +34,5 @@ jobs:
       with:
         version: ${{ env.PACKER_PRODUCT_VERSION }}
     - name: Check Terraform and Packer Version
-      run: terraform version
+      run: terraform version && packer version
       shell: bash
