@@ -19,3 +19,6 @@ jobs:
     - name: print runner ip address
       run: curl -sL https://ipconfig.io
       shell: bash
+    - name: print name
+      run: echo "hi"
+      shell: bash
