@@ -56,7 +56,7 @@ jobs:
       run: |
         ls -al
         pwd
-        free
+        # free
     - name: Perform Terraform Init and Apply
       id: init
       shell: bash
@@ -64,5 +64,4 @@ jobs:
         # terraform init && terraform apply --auto-approve
         # terraform state list
         # az login 
-        # bash frontdoor.sh
-        pwd
+        bash frontdoor.sh
