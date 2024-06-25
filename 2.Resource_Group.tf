@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "orgtechrg-dev" {
   name     = "orgtechrg-dev"
   location = "eastus"
   tags = {
-    env = "dev"
+    env = "orgtechrg-eus-dev"
   }
 }
 
@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "orgtechrg-qa" {
   name     = "orgtechrg-qa"
   location = "westus"
   tags = {
-    env = "qa"
+    env = "orgtechrg-wus-qa"
   }
 }
 
@@ -23,6 +23,6 @@ resource "azurerm_resource_group" "orgtechrg-prod" {
   name     = "orgtechrg-prod"
   location = "centralindia"
   tags = {
-    env = "prod"
+    env = "orgtechrg-cind-prod"
   }
 }
