@@ -3,26 +3,33 @@
 #   arrguments of the resources ex: arg1 = ?
 # }
 
-resource "azurerm_resource_group" "orgtechrg-dev" {
-  name     = "orgtechrg-dev"
-  location = "eastus"
+#Declaring Variables
+variable "rgname" {
+  default = "orgtechhsk"
+}
+variable "location" {
+  default = "eastus"
+}
+resource "azurerm_resource_group" "orgtechhsk-dev" {
+  name     = var.rgname
+  location = var.location
   tags = {
-    env = "orgtechrg-eus-dev"
+    env = "${var.rgname}-eus-dev"
   }
 }
 
-resource "azurerm_resource_group" "orgtechrg-qa" {
-  name     = "orgtechrg-qa"
-  location = "westus"
-  tags = {
-    env = "orgtechrg-wus-qa"
-  }
-}
+# resource "azurerm_resource_group" "orgtechhsk-qa" {
+#   name     = "orgtechhsk-qa"
+#   location = "westus"
+#   tags = {
+#     env = "orgtechhsk-wus-qa"
+#   }
+# }
 
-resource "azurerm_resource_group" "orgtechrg-prod" {
-  name     = "orgtechrg-prod"
-  location = "centralindia"
-  tags = {
-    env = "orgtechrg-cind-prod"
-  }
-}
+# resource "azurerm_resource_group" "orgtechhsk-prod" {
+#   name     = "orgtechhsk-prod"
+#   location = "centralindia"
+#   tags = {
+#     env = "orgtechhsk-cind-prod"
+#   }
+# }
