@@ -1,6 +1,3 @@
-variable "vnet1_address_space" {
-  default = ["10.1.0.0/16"]
-}
 
 resource "azurerm_virtual_network" "orgtechhsk-vnet" {
   name                = "${azurerm_resource_group.orgtechhsk-dev.name}-vnet1"

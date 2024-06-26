@@ -3,13 +3,6 @@
 #   arrguments of the resources ex: arg1 = ?
 # }
 
-#Declaring Variables
-variable "rgname" {
-  default = "orgtechhsk"
-}
-variable "location" {
-  default = "eastus"
-}
 resource "azurerm_resource_group" "orgtechhsk-dev" {
   name     = var.rgname
   location = var.location
