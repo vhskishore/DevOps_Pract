@@ -12,4 +12,9 @@
     -   Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filename.
     - We can also create storage.auto.tfvars.
     -   Any -var and -var-file options on the command line, in the order they are provided.
+8. Terraform State Related Commands
+    - ### 
+    ```
+    terraform state list
+    ```
 8. Moving Statefile to central location - Azure Storage Account.

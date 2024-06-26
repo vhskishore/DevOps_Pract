@@ -17,9 +17,16 @@ terraform {
       source  = "elastic/elasticstack"
     }
   }
-  required_version = ">= 0.13"
+  required_version = ">= 1.7.3"
+  backend "azurerm" {
+    resource_group_name  = "orghsktech--rg-dev"
+    storage_account_name = "orgtechhskeustfstatefile"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
   features {}
 }
+
