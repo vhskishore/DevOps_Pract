@@ -31,3 +31,4 @@
 18. Multi User Terraform State Access.
 19. Removing resource from statefile using terraform state rm <resource_name>
 20. How Terraform state locking works when using Azure Storage Account.
+21. Terraform Data Sources for accessing resources which are not part of terraform state.
