@@ -30,3 +30,4 @@
 17. Rename Resources
 18. Multi User Terraform State Access.
 19. Removing resource from statefile using terraform state rm <resource_name>
+20. How Terraform state locking works when using Azure Storage Account.
