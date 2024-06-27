@@ -26,7 +26,7 @@ terraform {
   # }
   backend "s3" {
     bucket = "orgtechhskeushyd"
-    key    = "tfstate"
+    key    = "path/to/my/key"
     region = "us-east-1"
   }
 }
