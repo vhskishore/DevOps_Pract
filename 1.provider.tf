@@ -24,6 +24,11 @@ terraform {
   #   container_name       = "tfstate"
   #   key                  = "terraform.tfstate"
   # }
+  backend "s3" {
+    bucket = "orgtechhskeushyd"
+    key    = "tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "azurerm" {
