@@ -11,59 +11,62 @@ resource "azurerm_key_vault" "orgtechhskkeyvault" {
 
   sku_name = "standard"
 
-  #   access_policy {
-  #     tenant_id = data.azurerm_client_config.current.tenant_id
-  #     object_id = data.azurerm_client_config.current.object_id
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
 
-  #     secret_permissions = [
-  #       "Get",
-  #       "List",
-  #       "Purge",
-  #       "Recover",
-  #       "Restore",
-  #       "Set",
-  #       "Delete",
-  #       "Recover"
-  #     ]
-  #   }
+    secret_permissions = [
+      "Get",
+      "List",
+      "Purge",
+      "Recover",
+      "Restore",
+      "Set",
+      "Delete",
+      "Recover"
+    ]
+  }
 }
 
-resource "azurerm_key_vault_access_policy" "orgtechhskkeyvaultap" {
-  key_vault_id = azurerm_key_vault.orgtechhskkeyvault.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = data.azurerm_client_config.current.object_id
+# resource "azurerm_key_vault_access_policy" "orgtechhskkeyvaultap" {
+#   key_vault_id = azurerm_key_vault.orgtechhskkeyvault.id
+#   tenant_id    = data.azurerm_client_config.current.tenant_id
+#   object_id    = data.azurerm_client_config.current.object_id
 
-  secret_permissions = [
-    "Get",
-    "List",
-    "Purge",
-    "Recover",
-    "Restore",
-    "Set",
-    "Delete",
-    "Recover"
-  ]
-}
+#   secret_permissions = [
+#     "Get",
+#     "List",
+#     "Purge",
+#     "Recover",
+#     "Restore",
+#     "Set",
+#     "Delete",
+#     "Recover"
+#   ]
+# }
 
 resource "azurerm_key_vault_secret" "password-1" {
   name         = "password1"
   value        = random_password.password1.result
   key_vault_id = azurerm_key_vault.orgtechhskkeyvault.id
-  depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  #depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  depends_on = [azurerm_key_vault.orgtechhskkeyvault]
 }
 
 resource "azurerm_key_vault_secret" "password-2" {
   name         = "password2"
   value        = random_password.password2.result
   key_vault_id = azurerm_key_vault.orgtechhskkeyvault.id
-  depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  #depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  depends_on = [azurerm_key_vault.orgtechhskkeyvault]
 }
 
 resource "azurerm_key_vault_secret" "password-3" {
   name         = "password3"
   value        = random_password.password3.result
   key_vault_id = azurerm_key_vault.orgtechhskkeyvault.id
-  depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  #depends_on   = [azurerm_key_vault_access_policy.orgtechhskkeyvaultap]
+  depends_on = [azurerm_key_vault.orgtechhskkeyvault]
 }
 
 # resource "azurerm_key_vault_access_policy" "orgtechhskaccesspolicy" {
