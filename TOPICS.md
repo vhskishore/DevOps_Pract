@@ -32,3 +32,6 @@
 19. Removing resource from statefile using terraform state rm <resource_name>
 20. How Terraform state locking works when using Azure Storage Account.
 21. Terraform Data Sources for accessing resources which are not part of terraform state.
+22. Terraform Data Sources for accessing resources which are not part of terraform state.
+    - Create passwords in existing keyvault.
+    - Create DNS Records in existing DNS Zone.
