@@ -17,4 +17,15 @@
     ```
     terraform state list
     ```
-8. Moving Statefile to central location - Azure Storage Account.
+9. Moving Statefile to central location - Azure Storage Account.
+10. Renaming master to development branch
+11. Created a Feature Branch, Edited the code and push remote.
+12. Raised PR and added approvers and merged after approval, delete Branch.
+13. Change branch to development and perform git pull to download update code.
+14. Delete Resource Individually.
+    - terraform destroy -target <resource_name>
+
+15. Linux User GIT Repo Access, Git Pull vs Git Fetch and Git Conflicts.
+16. Data Sources for KeyVault
+17. Rename Resources
+18. Multi User Terraform State Access.
