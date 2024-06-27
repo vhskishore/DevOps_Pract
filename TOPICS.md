@@ -29,3 +29,4 @@
 16. Data Sources for KeyVault
 17. Rename Resources
 18. Multi User Terraform State Access.
+19. Removing resource from statefile using terraform state rm <resource_name>
