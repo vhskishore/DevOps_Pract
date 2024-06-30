@@ -35,3 +35,11 @@
 22. Terraform Data Sources for accessing resources which are not part of terraform state.
     - Create passwords in existing keyvault.
     - Create DNS Records in existing DNS Zone.
+
+23. Git Interactive rebase.
+24. Git Reset - hard,soft,mixed = For Deleting Range of Commits.
+25. Git Revert
+26. Git Stash
+27. Git Cherry-pick
+28. Git Reflog and restore deleted branches.
+29. For Git Push.
