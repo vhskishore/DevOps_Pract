@@ -42,4 +42,8 @@
 26. Git Stash
 27. Git Cherry-pick
 28. Git Reflog and restore deleted branches.
-29. For Git Push.
+29. Git Merge Local
+30. Git hooks - Pre-Commit and Post Commit.
+31. Git secrets to scan secrets using pre-commit hook.
+
+32. Creating Git Hub Actions Pipeline with Terraform and Azure.
