@@ -5,8 +5,8 @@ on:
     branches: [development]
     types: [closed]
   push:
-    branches-ignore:
-    - INF-1205-keyvault
+    # branches-ignore:
+    # - INF-1205-keyvault
     branches: [actions]
 env:
   ENVIRONMENT: "Development"
