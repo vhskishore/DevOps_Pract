@@ -43,3 +43,6 @@ jobs:
     - name: Check Terraform Version
       run: terraform version
       shell: bash
+    - name: Check Packer Version
+      run: packer version
+      shell: bash
