@@ -1,0 +1,44 @@
+- name: Workflow for Running Azure Terraform Code
+  # on: [push, merge]
+  on:
+    pull_request:
+      branches: [development]
+      types: [closed]
+    branches-ignore:
+    - INF-1208-KeyVault
+    push:
+      branches: [actions]
+  env:
+    ENVIRONMENT: "Development"
+    ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+    ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+    ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+    ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+    ACTIONS_STEP_DEBUG: true
+
+  jobs:
+    testjob:
+      name: 'test job'
+      runs-on: ubuntu-latest
+      default:
+        run:
+          shell: bash
+      steps:
+      - name: Print Runner Hostname
+        run: hostname
+        shell: bash
+      - name: Print Runner IP Address
+        run: curl -sL https://ipconfig.io
+        shell: bash
+      - name: Setup Terraform with Specified Version on the runner
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.7.3
+      - name: Setup Packer
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: ${{ env.PRODUCT_VERSION }}
+      - name: Check Terraform Version
+        run: terraform version
+        shell: bash
