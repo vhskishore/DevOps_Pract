@@ -71,3 +71,4 @@ jobs:
           echo ${{ github.event.inputs.ENVIRONMENT }}
           echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
           terraform init && terraform fmt && terraform validate && terraform plan
+          ls -alrt
