@@ -64,7 +64,7 @@ jobs:
           ls -alrt
           pwd
           free
-      - name: Perform Terraform init fmt validate plan
+      - name: Perform Terraform init fmt validate plan apply
         id: init
         shell: bash
         run: |
