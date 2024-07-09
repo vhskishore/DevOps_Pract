@@ -15,6 +15,8 @@
     ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
     ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
     ACTIONS_STEP_DEBUG: true
+    PACKER_PRODUCT_VERSION: 1.8.5
+    TERRAFORM_PRODUCT_VERSION: 1.7.3
 
   jobs:
     testjob:
@@ -33,12 +35,12 @@
       - name: Setup Terraform with Specified Version on the runner
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.7.3
+          terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
       - name: Setup Packer
         uses: hashicorp/setup-packer@main
         id: setup
         with:
-          version: ${{ env.PRODUCT_VERSION }}
+          version: ${{ env.PACKER_PRODUCT_VERSION }}
       - name: Check Terraform Version
         run: terraform version
         shell: bash
