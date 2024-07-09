@@ -5,9 +5,9 @@ on:
     branches: [development]
     types: [closed]
   push:
-    branches: [actions]
     branches-ignore:
-    - INF-1208-KeyVault
+    - INF-1205-keyvault
+    branches: [actions]
 env:
   ENVIRONMENT: "Development"
   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
