@@ -17,6 +17,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  TERRAFORM_STATE: destroy
   ACTIONS_STEP_DEBUG: true
   PACKER_PRODUCT_VERSION: 1.11.1
   TERRAFORM_PRODUCT_VERSION: 1.9.1
@@ -75,4 +76,8 @@ jobs:
         run: |
           echo ${{ github.event.inputs.ENVIRONMENT }}
           echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
-          terraform init && terraform fmt && terraform validate && terraform plan && terraform apply --auto-approve
+          terraform init && terraform fmt && terraform validate && terraform plan
+      - name: Terraform State Apply or Destroy
+        shell: bash
+        run: |
+          terraform ${{ env.TERRAFORM_STATE }} --auto-approve
