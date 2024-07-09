@@ -55,7 +55,7 @@ jobs:
           shell: bash
       steps:
       - name: List Repo Files
-        run:
+        run: |
           ls -alrt
           pwd
           free
