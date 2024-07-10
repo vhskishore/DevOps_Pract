@@ -4,6 +4,8 @@ on:
   workflow_run:
     workflows: ["Configuration"]
     branches: [actions]
+    types:
+      - completed
   # pull_request:
   #   branches: [development]
   #   types: [closed]
