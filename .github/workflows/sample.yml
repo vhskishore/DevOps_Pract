@@ -124,7 +124,7 @@ jobs:
         run: |
           terraform ${{ env.TERRAFORM_STATE }} --auto-approve
   terraform_list:
-    name: 'Terraform Apply'
+    name: 'Terraform State List'
     runs-on: self-hosted
     needs: terraform_apply
     defaults:
@@ -144,7 +144,7 @@ jobs:
     #     echo ${{ github.event.inputs.ENVIRONMENT }}
     #     echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
     #     terraform plan
-    - name: Terraform State Apply or Destroy
+    - name: Terraform State List
       shell: bash
       run: |
         terraform state list
