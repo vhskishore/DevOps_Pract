@@ -1,17 +1,10 @@
-name: Terraform
+name: terraform
 on:
   workflow_run:
     workflows: ["configuration"]
     branches: [actions]
     types:
       - completed
-  pull_request:
-    branches: [development]
-    types: [closed]
-  push:
-    # branches-ignore:
-    # - INF-1205-keyvault
-    branches: [actions]
 # name: Terraform
 # # on: [push, merge]
 # on:
