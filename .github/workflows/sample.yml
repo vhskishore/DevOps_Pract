@@ -3,8 +3,7 @@ on:
   workflow_run:
     workflows: ["configuration"]
     branches: ["actions"]
-    types:
-      - completed
+    types: [completed]
 # name: Terraform
 # # on: [push, merge]
 # on:
