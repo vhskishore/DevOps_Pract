@@ -91,12 +91,6 @@ jobs:
       #       client-id: ${{ secrets.AZURE_CLIENT_ID }}
       #       tenant-id: ${{ secrets.AZURE_TENANT_ID }}
       #       subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      - name: CheckOut
-        uses: actions/checkout@v3
-      - name: List Repo Files
-        run: |
-          ls -alrt
-          pwd
       - name: Perform Terraform init fmt validate plan apply
         id: init
         shell: bash
@@ -118,12 +112,6 @@ jobs:
       #       client-id: ${{ secrets.AZURE_CLIENT_ID }}
       #       tenant-id: ${{ secrets.AZURE_TENANT_ID }}
       #       subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      - name: CheckOut
-        uses: actions/checkout@v3
-      - name: List Repo Files
-        run: |
-          ls -alrt
-          pwd
       - name: Perform Terraform init fmt validate plan apply
         id: init
         shell: bash
