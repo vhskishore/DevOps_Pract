@@ -112,15 +112,39 @@ jobs:
       #       client-id: ${{ secrets.AZURE_CLIENT_ID }}
       #       tenant-id: ${{ secrets.AZURE_TENANT_ID }}
       #       subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      - name: Perform Terraform init fmt validate plan apply
-        id: init
-        shell: bash
-        run: |
-          echo ${{ github.event.inputs.ENVIRONMENT }}
-          echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
-          terraform plan
+      # - name: Perform Terraform init fmt validate plan apply
+      #   id: init
+      #   shell: bash
+      #   run: |
+      #     echo ${{ github.event.inputs.ENVIRONMENT }}
+      #     echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
+      #     terraform plan
       - name: Terraform State Apply or Destroy
         shell: bash
         run: |
           terraform ${{ env.TERRAFORM_STATE }} --auto-approve
-          terraform state list
+  terraform_list:
+    name: 'Terraform Apply'
+    runs-on: self-hosted
+    needs: terraform_apply
+    defaults:
+      run:
+        shell: bash
+    steps:
+    # - name: 'Az CLI login'
+    #   uses: azure/login@v1
+    #   with:
+    #       client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    #       tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    #       subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    # - name: Perform Terraform init fmt validate plan apply
+    #   id: init
+    #   shell: bash
+    #   run: |
+    #     echo ${{ github.event.inputs.ENVIRONMENT }}
+    #     echo ${{ github.event.inputs.TERRAFORM_DESTROY }}
+    #     terraform plan
+    - name: Terraform State Apply or Destroy
+      shell: bash
+      run: |
+        terraform state list
