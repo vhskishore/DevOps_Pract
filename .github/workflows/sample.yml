@@ -1,7 +1,7 @@
 name: terraform
 on:
   workflow_run:
-    workflows: ["configuration"]
+    workflows: [configuration]
     branches: [actions]
     types: [completed]
 # name: Terraform
