@@ -1,9 +1,13 @@
 name: Workflow 1
 
 on:
+  pull_request:
+    branches: [development]
+    types: [closed]
   push:
-    branches:
-      - actions
+    # branches-ignore:
+    # - INF-1205-keyvault
+    branches: [actions]
 
 jobs:
   build:
