@@ -17,13 +17,14 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-  TERRAFORM_STATE: destroy
+  TERRAFORM_STATE: apply
   ACTIONS_STEP_DEBUG: true
   PACKER_PRODUCT_VERSION: 1.11.1
   TERRAFORM_PRODUCT_VERSION: 1.9.1
 jobs:
   testjob:
     name: 'Tools Configuration and Check'
+    if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
     runs-on: self-hosted
     defaults:
       run:
