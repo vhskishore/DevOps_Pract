@@ -1,0 +1,15 @@
+name: Workflow 2
+
+on:
+  workflow_run:
+    workflows: ["Workflow 1"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy application
+        run: echo "Deploying application..."
