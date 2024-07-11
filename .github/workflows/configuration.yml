@@ -24,7 +24,7 @@ env:
 jobs:
   testjob:
     name: 'Tools Configuration and Check'
-    if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
+    #if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
     runs-on: self-hosted
     defaults:
       run:
