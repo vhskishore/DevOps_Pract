@@ -93,7 +93,6 @@ jobs:
           ls -alrt
           pwd
       - name: Terraform init
-        if: ${{ (steps.init.exit_code == 0) && (github.event.inputs.TERRAFORM == 'DESTROY') }}
         id: init
         shell: bash
         run: |
@@ -145,7 +144,8 @@ jobs:
       - name: Terraform State Apply or Destroy
         shell: bash
         run: |
-          terraform ${{ env.TERRAFORM_STATE }} --auto-approve
+          # terraform ${{ env.TERRAFORM_STATE }} --auto-approve
+          terraform ${{ github.event.inputs.TERRAFORM }} --auto-approve
   terraform_list:
     name: 'Terraform State List'
     runs-on: self-hosted
