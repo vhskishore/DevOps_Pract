@@ -63,7 +63,6 @@ jobs:
       run: packer version
       shell: bash
   terraform_init:
-      if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
       name: 'Terraform Init'
       runs-on: self-hosted
       needs: testjob
