@@ -21,15 +21,15 @@ on:
     # - INF-1205-keyvault
     branches: [actions]
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'APPLY'
-        type: choice
-        options:
-        - APPLY
-        - DESTROY
+    # inputs:
+    #   logLevel:
+    #     description: 'Log level'
+    #     required: true
+    #     default: 'APPLY'
+    #     type: choice
+    #     options:
+    #     - APPLY
+    #     - DESTROY
 env:
   ENVIRONMENT: "Development"
   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
