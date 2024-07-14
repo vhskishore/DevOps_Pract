@@ -25,7 +25,6 @@ on:
       TERRAFORM:
         description: 'Shall We Run Terraform Plan/Apply/Destroy'
         required: true
-        #default: 'DESTROY'
         type: choice
         options:
           - PLAN
