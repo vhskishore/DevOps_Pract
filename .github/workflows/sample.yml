@@ -1,10 +1,10 @@
 name: terraform
 on:
- workflow_run:
-  workflows: [configuration]
-  # branches: [actions]
-  types: 
-    - completed
+#  workflow_run:
+#   workflows: [configuration]
+#   # branches: [actions]
+#   types: 
+#     - completed
 # name: Terraform
 # # on: [push, merge]
 # on:
@@ -13,13 +13,13 @@ on:
 #     branches: [actions]
 #     types:
 #       - completed
-  # pull_request:
-  #   branches: [development]
-  #   types: [closed]
-  # push:
-  #   # branches-ignore:
-  #   # - INF-1205-keyvault
-  #   branches: [actions]
+  pull_request:
+    branches: [development]
+    types: [closed]
+  push:
+    # branches-ignore:
+    # - INF-1205-keyvault
+    branches: [actions]
 env:
   ENVIRONMENT: "Development"
   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
@@ -34,39 +34,39 @@ env:
   PACKER_PRODUCT_VERSION: 1.11.1
   TERRAFORM_PRODUCT_VERSION: 1.9.1
 jobs:
-  # testjob:
-  #   name: 'Tools Configuration and Check'
-  #   runs-on: self-hosted
-  #   defaults:
-  #     run:
-  #       shell: bash
-  #   steps:
-  #   - name: Print Runner Hostname
-  #     run: hostname
-  #     shell: bash
-  #   - name: Print Runner IP Address
-  #     run: curl -sL https://ipconfig.io
-  #     shell: bash
-  #   - name: Setup Terraform with Specified Version on the runner
-  #     uses: hashicorp/setup-terraform@v1
-  #     with:
-  #       terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
-  #   - name: Setup Packer
-  #     uses: hashicorp/setup-packer@main
-  #     id: setup
-  #     with:
-  #       version: ${{ env.PACKER_PRODUCT_VERSION }}
-  #   - name: Check Terraform Version
-  #     run: terraform version
-  #     shell: bash
-  #   - name: Check Packer Version
-  #     run: packer version
-  #     shell: bash
+  testjob:
+    name: 'Tools Configuration and Check'
+    runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Print Runner Hostname
+      run: hostname
+      shell: bash
+    - name: Print Runner IP Address
+      run: curl -sL https://ipconfig.io
+      shell: bash
+    - name: Setup Terraform with Specified Version on the runner
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+    - name: Setup Packer
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{ env.PACKER_PRODUCT_VERSION }}
+    - name: Check Terraform Version
+      run: terraform version
+      shell: bash
+    - name: Check Packer Version
+      run: packer version
+      shell: bash
   terraform_init:
       if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
       name: 'Terraform Init'
       runs-on: self-hosted
-      # needs: testjob
+      needs: testjob
       defaults:
         run:
           shell: bash

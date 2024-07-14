@@ -1,53 +1,53 @@
-name: configuration
-# on: [push, merge]
-on:
-  pull_request:
-    branches: [development]
-    types: [closed]
-  push:
-    # branches-ignore:
-    # - INF-1205-keyvault
-    branches: [actions]
-env:
-  ENVIRONMENT: "Development"
-  ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
-  ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
-  ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
-  ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-  TERRAFORM_STATE: destroy
-  ACTIONS_STEP_DEBUG: true
-  PACKER_PRODUCT_VERSION: 1.11.1
-  TERRAFORM_PRODUCT_VERSION: 1.9.1
-jobs:
-  testjob:
-    name: 'Tools Configuration and Check'
-    #if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
-    runs-on: self-hosted
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Print Runner Hostname
-      run: hostname
-      shell: bash
-    - name: Print Runner IP Address
-      run: curl -sL https://ipconfig.io
-      shell: bash
-    - name: Setup Terraform with Specified Version on the runner
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
-    - name: Setup Packer
-      uses: hashicorp/setup-packer@main
-      id: setup
-      with:
-        version: ${{ env.PACKER_PRODUCT_VERSION }}
-    - name: Check Terraform Version
-      run: terraform version
-      shell: bash
-    - name: Check Packer Version
-      run: packer version
-      shell: bash
+# name: configuration
+# # on: [push, merge]
+# on:
+#   pull_request:
+#     branches: [development]
+#     types: [closed]
+#   push:
+#     # branches-ignore:
+#     # - INF-1205-keyvault
+#     branches: [actions]
+# env:
+#   ENVIRONMENT: "Development"
+#   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+#   ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+#   ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+#   ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+#   TERRAFORM_STATE: destroy
+#   ACTIONS_STEP_DEBUG: true
+#   PACKER_PRODUCT_VERSION: 1.11.1
+#   TERRAFORM_PRODUCT_VERSION: 1.9.1
+# jobs:
+#   testjob:
+#     name: 'Tools Configuration and Check'
+#     #if: ${{ vars.TERRAFORM_STATE == 'destroy' }}
+#     runs-on: self-hosted
+#     defaults:
+#       run:
+#         shell: bash
+#     steps:
+#     - name: Print Runner Hostname
+#       run: hostname
+#       shell: bash
+#     - name: Print Runner IP Address
+#       run: curl -sL https://ipconfig.io
+#       shell: bash
+#     - name: Setup Terraform with Specified Version on the runner
+#       uses: hashicorp/setup-terraform@v1
+#       with:
+#         terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+#     - name: Setup Packer
+#       uses: hashicorp/setup-packer@main
+#       id: setup
+#       with:
+#         version: ${{ env.PACKER_PRODUCT_VERSION }}
+#     - name: Check Terraform Version
+#       run: terraform version
+#       shell: bash
+#     - name: Check Packer Version
+#       run: packer version
+#       shell: bash
