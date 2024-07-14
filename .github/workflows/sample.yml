@@ -25,7 +25,7 @@ on:
       TERRAFORM:
         description: 'Shall We Run Terraform Plan/Apply/Destroy'
         required: true
-        #default: 'DESTROY'
+        default: 'DESTROY'
         type: choice
         options:
           - PLAN
@@ -94,6 +94,7 @@ jobs:
           ls -alrt
           pwd
       - name: Terraform init
+        if: ${{ (steps.init.exit_code == 0) && (github.event.inputs.TERRAFORM == 'DESTROY') }}
         id: init
         shell: bash
         run: |
