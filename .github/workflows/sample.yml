@@ -22,14 +22,14 @@ on:
     branches: [actions]
   workflow_dispatch:
     inputs:
-      TERRAFORM:
-        description: 'Shall We Run Terraform Plan/Apply/Destroy'
+      logLevel:
+        description: 'Log level'
         required: true
+        default: 'APPLY'
         type: choice
         options:
-          - PLAN
-          - APPLY
-          - DESTROY
+        - APPLY
+        - DESTROY
 env:
   ENVIRONMENT: "Development"
   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
