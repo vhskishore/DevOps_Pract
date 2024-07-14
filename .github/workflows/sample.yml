@@ -20,6 +20,17 @@ on:
     # branches-ignore:
     # - INF-1205-keyvault
     branches: [actions]
+  workflow_dispatch:
+    inputs:
+      TERRAFORM:
+        description: 'Shall We Run Terraform Plan/Apply/Destroy'
+        required: true
+        #default: 'DESTROY'
+        type: choice
+        options:
+          - PLAN
+          - APPLY
+          - DESTROY
 env:
   ENVIRONMENT: "Development"
   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
